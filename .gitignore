@@ -1,0 +1,5 @@
+tmp
+dist
+bower_components
+node_modules
+spec/support/*

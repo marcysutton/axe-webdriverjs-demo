@@ -1,0 +1,18 @@
+{
+  "name": "axe-webdriverjs-demo",
+  "version": "1.0.0",
+  "description": "How to set up aXe with WebdriverJS for automated testing.",
+  "scripts": {
+    "test": "jasmine spec/test.js"
+  },
+  "author": {
+    "name": "Marcy Sutton",
+    "organization": "Deque Systems",
+    "url": "http://deque.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "axe-webdriverjs": "^0.2.0",
+    "selenium-webdriver": "^2.48.2"
+  }
+}
