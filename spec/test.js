@@ -5,16 +5,20 @@ describe('Selenium-aXe Tutorial', function() {
 
     // Open the Deque website in the browser before each test is run
     beforeEach(function(done) {
-        this.driver = new selenium.Builder().
-            withCapabilities(selenium.Capabilities.firefox()).
-            build();
+        this.driver = new selenium.Builder()
+            .forBrowser('firefox')
+            .build();
 
-        this.driver.get('http://www.deque.com/').then(done);
+        this.driver
+            .get('http://www.deque.com/')
+            .then(function() {
+                done();
+            });
     });
 
     // Close the website after each test is run (so that it is opened fresh each time)
-    afterEach(function(done) {
-        this.driver.quit().then(done);
+    afterEach(function() {
+        this.driver.quit();
     });
 
     // Test to ensure we are on the home page by checking the <body> tag for a specific class
