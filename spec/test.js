@@ -10,8 +10,7 @@ describe('Selenium-aXe Tutorial', function() {
     // Open the Deque website in the browser before each test is run
     beforeEach(function(done) {
         driver = new selenium.Builder()
-            .forBrowser('firefox')
-            .usingServer('http://localhost:4444/wd/hub');
+            .forBrowser('chrome');
 
         browser = driver.build();
 

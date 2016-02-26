@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "How to set up aXe with WebdriverJS for automated testing.",
   "scripts": {
+    "postinstall": "./node_modules/.bin/jasmine init",
     "test": "./node_modules/.bin/jasmine spec/test.js"
   },
   "author": {
