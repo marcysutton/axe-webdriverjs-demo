@@ -1,11 +1,10 @@
 #axe-webdriverjs demo
 
-How to set up aXe with Selenium WebdriverJS for automated testing.
+How to set up aXe with Selenium WebdriverJS and Jasmine for automated testing.
 
 ##Requirements
 * Node.js
 * Firefox browser
-* Selenium Webdriver
 
 ##Installation
 
@@ -19,25 +18,19 @@ From the command line, install axe-core:
 npm install axe-core
 ```
 
-Install required dependencies (includes selenium-webdriver):
+Install required dependencies (includes Jasmine):
 ```
 npm install
 ```
 
-Install Jasmine globally (may require sudo):
-```
-npm install -g jasmine
-jasmine init
-```
-
 ##Usage
 
-Start Webdriver from the command line:
+Start Selenium Server from the command line:
 ```
-java -jar selenium-server-standalone-2.47.0.jar
+java -jar selenium-server-standalone-2.52.0.jar
 ```
 
 Now, in a separate tab:
 ```
-jasmine spec/test.js
+npm test
 ```

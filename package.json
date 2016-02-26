@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "How to set up aXe with WebdriverJS for automated testing.",
   "scripts": {
-    "test": "jasmine spec/test.js"
+    "test": "./node_modules/.bin/jasmine spec/test.js"
   },
   "author": {
     "name": "Marcy Sutton",
@@ -13,6 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "axe-webdriverjs": "^0.2.0",
+    "jasmine": "^2.4.1",
     "selenium-webdriver": "^2.48.2"
   }
 }
