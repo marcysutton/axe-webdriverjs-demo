@@ -3,6 +3,8 @@ var selenium = require('selenium-webdriver'),
 
 var driver, browser;
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+
 describe('Selenium-aXe Tutorial', function() {
 
     // Open the Deque website in the browser before each test is run
@@ -15,7 +17,7 @@ describe('Selenium-aXe Tutorial', function() {
 
         browser.manage().timeouts().setScriptTimeout(60000);
 
-        browser.get('http://www.marcysutton.com/').then(function () {
+        browser.get('http://www.deque.com/').then(function () {
             browser.executeAsyncScript(function(callback) {
                 var script = document.createElement('script');
                 script.innerHTML = 'document.documentElement.classList.add("deque-axe-is-ready");';
