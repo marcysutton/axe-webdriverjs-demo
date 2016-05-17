@@ -1,59 +1,59 @@
 var selenium = require('selenium-webdriver'),
-    AxeBuilder = require('axe-webdriverjs');
+    AxeBuilder = require('axe-webdriverjs'),
+    Key = selenium.Key;
 
-var driver, browser;
+var util = require('util');
 
-jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
+var driver;
 
-describe('Selenium-aXe Tutorial', function() {
+describe('Radio button demo', function() {
 
-    // Open the Deque website in the browser before each test is run
     beforeEach(function(done) {
         driver = new selenium.Builder()
-            .forBrowser('chrome');
+            .forBrowser('chrome')
+            .build();
 
-        browser = driver.build();
-
-        browser.manage().timeouts().setScriptTimeout(60000);
-
-        browser.get('http://www.deque.com/').then(function () {
-            browser.executeAsyncScript(function(callback) {
-                var script = document.createElement('script');
-                script.innerHTML = 'document.documentElement.classList.add("deque-axe-is-ready");';
-                document.documentElement.appendChild(script);
-                callback();
-            })
+        driver.get('http://localhost:4000/radio/')
             .then(function () {
-                return browser.wait(selenium.until.elementsLocated(selenium.By.css('.deque-axe-is-ready')));
-            })
-            .then(function(){
                 done();
             });
-        });
     });
 
-    // Close the website after each test is run (so that it is opened fresh each time)
+    // Close website after each test is run (so it is opened fresh each time)
     afterEach(function(done) {
-        browser.quit().then(function () {
+        driver.quit().then(function () {
             done();
         });
     });
 
-    it('should just fetch the home page and analyze it', function (done) {
-        browser.findElement(selenium.By.css('body.home')).then(function (element) {
-            return element.getAttribute('class').then(function (className) {
-                expect(className.indexOf('home')).toBe(0);
-            });
-        }).then(function () {
-            AxeBuilder(browser)
-                .analyze(function(results) {
-                    console.log('Accessibility Violations: ', results.violations.length);
-                    if (results.violations.length > 0) {
-                        console.log(results.violations);
-                    }
-                    expect(results.violations.length).toBe(0);
-                    done();
-                })
+    it('should change state with the keyboard', function() {
+      var selector = 'span[role="radio"][aria-labelledby="radiogroup-0-label-0"]';
+
+      driver.findElement(selenium.By.css(selector))
+        .then(function (element) {
+            element.sendKeys(Key.SPACE);
+            return element;
+        })
+        .then(function (element) {
+            return element.getAttribute('aria-checked')
+        })
+        .then(function (attr) {
+            expect(attr).toEqual('true');
         });
+    });
+
+    it('should fetch the radio button demo and analyze it', function (done) {
+        driver.findElement(selenium.By.css('.radio_'))
+            .then(function () {
+                AxeBuilder(driver)
+                    .analyze(function(results) {
+                        console.log('Accessibility Violations: ', results.violations.length);
+                        if (results.violations.length > 0) {
+                            console.log(util.inspect(results.violations, true, null));
+                        }
+                        expect(results.violations.length).toBe(0);
+                        done();
+                    })
+            });
     });
 });
