@@ -1,13 +1,13 @@
-#axe-webdriverjs demo
+# axe-webdriverjs demo
 
 How to set up aXe with Selenium WebdriverJS and Jasmine for automated testing.
 
-##Requirements
+## Requirements
 * Node.js
 * npm
 * Chrome browser
 
-##Installation
+## Installation
 
 If you don't already have it, [download Chrome driver](https://sites.google.com/a/chromium.org/chromedriver/downloads) and put it in a location on your system $PATH.
 
@@ -18,11 +18,11 @@ Install dependencies (including Jasmine):
 npm install
 ```
 
-###Demo Project
+### Demo Project
 
-This demo tests eBay's Accessibility Pattern examples running locally at http://localhost:4000. You can follow along with the project by cloning the repository and setting it up on your local machine: https://github.com/ianmcburnie/mindpatterns/ 
+The demo tests in `spec/test.js` require eBay's Accessibility Pattern examples to be running locally at `http://localhost:4000`. You can follow along with the project by cloning the repository and setting it up on your local machine: https://github.com/ianmcburnie/mindpatterns/ 
 
-##Usage: Run tests
+## Usage: Run tests
 
 ```
 npm test
