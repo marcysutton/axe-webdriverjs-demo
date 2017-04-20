@@ -5,6 +5,8 @@ var driver, browser;
 
 jasmine.DEFAULT_TIMEOUT_INTERVAL = 60000;
 
+var util = require('util');
+
 describe('Selenium-aXe Tutorial', function() {
 
     // Open the Deque website in the browser before each test is run
@@ -49,7 +51,11 @@ describe('Selenium-aXe Tutorial', function() {
                 .analyze(function(results) {
                     console.log('Accessibility Violations: ', results.violations.length);
                     if (results.violations.length > 0) {
-                        console.log(results.violations);
+                        console.log(util.inspect(results.violations, { showHidden: true, depth: 8 }));
+                    }
+                    console.log('Needs review: ', results.incomplete.length);
+                    if (results.incomplete.length > 0) {
+                        console.log(util.inspect(results.incomplete, { showHidden: true, depth: 8 }));
                     }
                     expect(results.violations.length).toBe(0);
                     done();
