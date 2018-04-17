@@ -10,7 +10,7 @@ var customRuleJson = require('./custom-rule.json');
 
 describe('Selenium-aXe Tutorial', function() {
 
-    // Open the Deque website in the browser before each test is run
+    // Open the MarsCommuter website in the browser before each test is run
     beforeEach(function(done) {
         driver = new selenium.Builder()
             .forBrowser('chrome');
@@ -29,7 +29,7 @@ describe('Selenium-aXe Tutorial', function() {
             .then(function () {
                 return browser.wait(selenium.until.elementsLocated(selenium.By.css('.deque-axe-is-ready')));
             })
-            .then(function(){
+            .then(function () {
                 done();
             });
         });
@@ -50,12 +50,12 @@ describe('Selenium-aXe Tutorial', function() {
                     .analyze(function(results) {
                         console.log('Accessibility Violations: ', results.violations.length);
                         if (results.violations.length > 0 || results.incomplete.length > 0) {
-                            console.log(util.inspect(results.violations, { showHidden: true, depth: 8 }));
+                            // console.log(util.inspect(results.violations, { showHidden: true, depth: 8 }));
                             // console.log(util.inspect(results.incomplete, { showHidden: true, depth: 5 }));
                         }
                         console.log(results);
                         // expect(results.violations.length).toBe(0);
-                        // // expect(results.incomplete.length).toBe(0);
+                        // expect(results.incomplete.length).toBe(0);
                         done();
                     })
             });
